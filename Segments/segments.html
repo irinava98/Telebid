@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Segment</title>
+		<script src="suica.min.js"></script>
+		<style>
+		   body{
+		     background-color:LightPink;
+		   }
+		   label{
+		      font-size:15px;
+			  font-family:"Ariel Black";
+		   }
+		    button{
+			   position:relative;
+			   border-radius:15px;
+			   padding:10px;
+			   magin:10px;
+			   background-color:LightGreen;
+			}
+			button:hover{
+			  
+			  background-color:Lime;
+			}
+			
+		</style>
+		<script>
+			function visualisation(){
+			    
+				new Suica();
+				
+				let n=Number(document.getElementById('segLength').value);
+				let a=Number(document.getElementById('gDistance').value);
+				let b=Number(document.getElementById('gergDistance').value);
+				let c=Number(document.getElementById('searchedDistance').value);
+				
+				
+				//oxyz();
+				background([0,0,0]);
+				
+				let len=n;
+				let pointsGeorgi=[];
+				let pointsGergana=[];
+				let seg=segment([0,0,0],[0,0,n]);
+				
+			    seg.color=[1,1,1];	
+				
+				for(let i=1;i<=n;i++){
+					if(i%a==0){
+					    pointsGeorgi.push(i);
+						let pointGeorgi=point([0,0,i]);
+						pointGeorgi.pointSize=4;
+						pointGeorgi.color=[0,1,0];
+					}
+				}
+				
+				for(let i=len;i>=1;i--){
+					if(i%b==0){
+					    pointsGergana.push(i);
+						let pointGergana=point([0,0,i]);
+						pointGergana.pointSize=4;
+						pointGergana.color=[1,0,1];
+					}
+				}
+				
+				 for(let pointGeorgi of pointsGeorgi){
+				    for(let pointGergana of pointsGergana){
+						let distance=Math.abs(pointGeorgi-pointGergana);
+							if(distance==c){
+							    let redSeg=segment([0,0.05,pointGeorgi],[0,0.05,pointGergana]);
+								redSeg.color=[1,0,0];
+								len-=distance;
+							}
+					}
+				 }
+				
+				document.getElementById('notColored').innerHTML="The part that is not colored is : "+len+" meters";
+		
+			}
+		</script>
+		
+	</head>
+	<body>
+	     
+		
+		  <label for="segmentLength">SegmentLength:</label>
+		  <input type="number" id="segLength" name="segLength" min="0" max="10000"><br><br>
+		  <label for="Georgi distance">Georgi Distance Between Points:</label>
+		  <input type="number" id="gDistance" name="gDistance" min="0" max="10000"><br><br>
+		  <label for="Gergana distance">Gergana Distance Between Points:</label>
+		  <input type="number" id="gergDistance" name="gergDistance" min="0" max="10000"><br><br>
+		  <label for="Searched distance">Searched Distance Between Points:</label>
+		  <input type="number" id="searchedDistance" name="serachedDistance" min="0" max="10000"><br><br>
+		  <button onclick="visualisation()">Show the results</button>
+	
+		
+		<canvas width="450" height="500" style="border: solid black 1px; background-color:White;">Не се поддържа canvas!</canvas>
+		<noscript>Не се поддържа JS!</noscript>
+		<p id="notColored"></p>
+	</body>
+</html>
+
+
+
+
+
+
+
+
