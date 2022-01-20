@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<title>DIVISION</title>
+
+
+<style>
+
+body{
+
+background-color:rgb(150,150,255);
+
+}
+
+
+input{
+ 
+ width:40px;
+ height:40px;
+
+}
+
+button{
+   
+   padding:15px;
+   position:relative;
+   left:100px;
+   border-radius:10px;
+   background-color:WhiteSmoke;
+}
+
+button:hover{
+	background-color:SpringGreen;
+}
+
+</style>
+
+
+<script>
+
+function calculate(){
+    let number1=Number(document.getElementById('num1').value);
+	let number2=Number(document.getElementById('num2').value);
+	let resultofDivision=(number1/number2).toFixed(2);
+	document.getElementById('result').value=resultofDivision;
+}
+
+</script>
+
+
+</head>
+
+
+
+<body>
+  
+  <h1>Division of two numbers</h1>
+  
+  
+  <label for="number1">First Number: </label>
+  <input type="text" id="num1" onfocus="value=''" value="">
+  /
+  <label for="number2">Second Number: </label>
+  <input type="text" id="num2" onfocus="value=''" value="">
+  =
+  <label for="result">Result: </label>
+  <input type="text" id="result" onfocus="value=''" value="">
+
+  <button onclick="calculate()">DIVIDE</button>
+
+
+</body>
+
+
+</html>
