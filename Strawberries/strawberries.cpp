@@ -64,7 +64,7 @@ int main()
        cin.ignore();
        cout << "You entered not a number. Try again." << endl;
     }
-    else if(r<=0 || l>100)
+    else if(r<=0 || r>100)
     {
 
        cin.clear();
