@@ -38,7 +38,7 @@
 		     function visualize(){
 			 
 	            new Suica();
-				
+				background([0.8,0.6,0.6]);
 				
 				
 				let k=Number(document.getElementById('rows').value);
@@ -59,9 +59,9 @@
 					 
 					     strawberries[i][j]=0;
 						 
-						 let strawberry=circle([0,4*j-30,4*i-20],2);
-						 strawberry.color=[1,0.5,0.8];
-						 strawberry.mode=Suica.LINE;
+						 let strawberry=sphere([0,4*j-30,4*i-20],2);
+						 strawberry.color=[1,1,1];
+						 strawberry.mode=Suica.SOLID;
 						 strawberry.focus=[0,1,0];
 						 
 					 }
@@ -90,7 +90,7 @@
 					let yCoord=y1-1;
 					strawberries[xCoord][yCoord]=1;
 					
-					let rotten=circle([0,4*yCoord-30,4*xCoord-20],2);
+					let rotten=sphere([0.05,4*yCoord-30,4*xCoord-20],2.03);
 					rotten.mode=Suica.SOLID;
 					rotten.color=[0,0,0];
 					rotten.focus=[0,1,0];
@@ -119,12 +119,12 @@
 					strawberries[x2Coord][y2Coord]=1;
 					
 					
-					let rotten=circle([0,4*y1Coord-30,4*x1Coord-20],2);
+					let rotten=sphere([0.05,4*y1Coord-30,4*x1Coord-20],2.03);
 					rotten.mode=Suica.SOLID;
 					rotten.color=[0,0,0];
 					rotten.focus=[0,1,0];
 					
-					let rotten2=circle([0,4*y2Coord-30,4*x2Coord-20],2);
+					let rotten2=sphere([0.05,4*y2Coord-30,4*x2Coord-20],2.03);
 					rotten2.mode=Suica.SOLID;
 					rotten2.color=[0,0,0];
 					rotten2.focus=[0,1,0];
@@ -157,7 +157,7 @@
 										let rottenDegree=day+1;
 										rottenDegree=rottenDegree/10+0.2;
 										
-									    let rotten2=circle([0,4*yCoord-30,4*xCoord-20],2);
+									    let rotten2=sphere([0.05,4*yCoord-30,4*xCoord-20],2.03);
 										rotten2.mode=Suica.SOLID;
 										rotten2.color=[rottenDegree,rottenDegree,rottenDegree];
 										rotten2.focus=[0,1,0];
@@ -174,7 +174,7 @@
 										
 									    let yCoord=j;
 										
-									    let rotten2=circle([0,4*yCoord-30,4*xCoord-20],2);
+									    let rotten2=sphere([0.05,4*yCoord-30,4*xCoord-20],2.03);
 										rotten2.mode=Suica.SOLID;
 								        let rottenDegree=day+1;
 										rottenDegree=rottenDegree/10+0.2;
@@ -193,7 +193,7 @@
 										
 									    let yCoord=j+1;
 										
-									    let rotten2=circle([0,4*yCoord-30,4*xCoord-20],2);
+									    let rotten2=sphere([0.05,4*yCoord-30,4*xCoord-20],2.03);
 										rotten2.mode=Suica.SOLID;
 										let rottenDegree=day+1;
 										rottenDegree=rottenDegree/10+0.2;
@@ -215,7 +215,7 @@
 										
 									    let yCoord=j-1;
 										
-									    let rotten2=circle([0,4*yCoord-30,4*xCoord-20],2);
+									    let rotten2=sphere([0.05,4*yCoord-30,4*xCoord-20],2.03);
 										rotten2.mode=Suica.SOLID;
 										let rottenDegree=day+1;
 										rottenDegree=rottenDegree/10+0.2;
