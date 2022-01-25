@@ -14,10 +14,33 @@ if(!empty($_POST))
 	if($num2 == 0)
 	{
 		$err="We cannot divide by zero";
-		echo $err;
+		
 	}
 
 	$result=round($num1/$num2,2);
+	
+	$server="localhost";
+	$username="root";
+	$password="";
+	$dbname="division";
+	$success="";
+	
+	$conn=mysqli_connect($server,$username,$password,$dbname);
+	  if (!$conn)
+	  {
+		die('Could not connect: ' . mysql_error());
+	  }
+	  $sql = "INSERT INTO numbers(number1, number2, result)
+				VALUES ($num1,$num2,$result)";
+				
+	 if ($conn->query($sql) === TRUE){
+	  $success="Added new record successfully.";
+	} else {
+	  echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+
+	$conn->close();			
+		
 }
 
 ?>
@@ -34,33 +57,36 @@ if(!empty($_POST))
 
 body{
 
-background-color:rgb(150,150,255);
+font-size:25px;
+text-align:center;
+background-color:rgb(150,200,255);
 
 }
 
 
 input{
  
- width:40px;
- height:40px;
+ width:50px;
+ height:50px;
+ font-size:15px;
 
 }
 
-button{
-   
-   padding:15px;
+
+#divide:hover{
+	background-color:Cyan;
+}
+#divide{
+   width:80px;
+   margin-left:20px;
    position:relative;
-   left:100px;
-   border-radius:10px;
+   position:relative;
    background-color:WhiteSmoke;
 }
 
-button:hover{
-	background-color:SpringGreen;
-}
-#divide{
-   width:70px;
-   margin-left:20px;
+#success{
+	position:relative;
+	top:400px;
 }
 
 </style>
@@ -88,7 +114,7 @@ button:hover{
 
   <input type="submit" id="divide" name="divide" value="DEVIDE">
   </form>
-
+ <p id="success"><?php echo($success); ?></p>
 </body>
 
 
