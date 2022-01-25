@@ -59,7 +59,10 @@ body{
 
 font-size:25px;
 text-align:center;
-background-color:rgb(150,200,255);
+background-repeat:no-repeat;
+background-image: linear-gradient(to bottom right, orange, pink);
+width: 100%;
+height: 100%;
 
 }
 
@@ -74,10 +77,12 @@ input{
 
 
 #divide:hover{
-	background-color:Cyan;
+	background-color:Purple;
+	color:White;
 }
 #divide{
    width:80px;
+   border-radius:25px;
    margin-left:20px;
    position:relative;
    position:relative;
