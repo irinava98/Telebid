@@ -35,9 +35,9 @@ if(!empty($_POST))
 				
 	 if ($conn->query($sqlInsert) === TRUE){
 		
-	  $sqlSelect="SELECT id FROM numbers ORDER BY id DESC LIMIT 1";
-      $resultArrayFromSelect=$conn->query($sqlSelect);
-      $row = $resultArrayFromSelect->fetch_row();
+	      $sqlSelect="SELECT id FROM numbers ORDER BY id DESC LIMIT 1";
+	      $resultArrayFromSelect=$conn->query($sqlSelect);
+	      $row = $resultArrayFromSelect->fetch_row();
 	  
 	  echo "<small><small> Added new record successfully on row :".$row[0]."</small></small>";
 	} else {
