@@ -23,20 +23,25 @@ if(!empty($_POST))
 	$username="root";
 	$password="";
 	$dbname="division";
-	$success="";
+	
 	
 	$conn=mysqli_connect($server,$username,$password,$dbname);
 	  if (!$conn)
 	  {
 		die('Could not connect: ' . mysql_error());
 	  }
-	  $sql = "INSERT INTO numbers(number1, number2, result)
+	  $sqlInsert = "INSERT INTO numbers(number1, number2, result)
 				VALUES ($num1,$num2,$result)";
 				
-	 if ($conn->query($sql) === TRUE){
-	  $success="Added new record successfully.";
+	 if ($conn->query($sqlInsert) === TRUE){
+		
+	  $sqlSelect="SELECT id FROM numbers ORDER BY id DESC LIMIT 1";
+      $resultArrayFromSelect=$conn->query($sqlSelect);
+      $row = $resultArrayFromSelect->fetch_row();
+	  
+	  echo "<small><small> Added new record successfully on row :".$row[0]."</small></small>";
 	} else {
-	  echo "Error: " . $sql . "<br>" . $conn->error;
+	  echo "Error: " . $sqlInsert . "<br>" . $conn->error;
 	}
 
 	$conn->close();			
@@ -119,7 +124,7 @@ input{
 
   <input type="submit" id="divide" name="divide" value="DEVIDE">
   </form>
- <p id="success"><?php echo($success); ?></p>
+
 </body>
 
 
