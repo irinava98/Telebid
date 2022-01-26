@@ -45,7 +45,7 @@
 			echo "<br>";
 			
 			    
-			    $insert = "INSERT INTO people(name, last_name, ucn, phone_number, date_of_birth) VALUE('".$name."', '".$last_name."', '".$ucn."', '".$phone_number."', '".$date_of_birth."')";
+			    $insert = "INSERT INTO people(name, last_name, ucn, phone_number, date_of_birth) VALUES('".$name."', '".$last_name."', '".$ucn."', '".$phone_number."', '".$date_of_birth."')";
 			    $conn->query($insert);
 				
 		}
