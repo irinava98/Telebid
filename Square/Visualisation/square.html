@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<title>Square</title>
+<script src="suica.min.js"></script>
+<style>
+
+button{
+border-radius: 15px 20px;
+font-size:15px;
+padding:10px;
+magin:20px;
+background-color:rgb(90%,0%,20%);
+}
+
+button:hover{
+font-weight:bold;
+
+}
+body{
+font-size:20px;
+background-image:url("abstract-embossed-white-grey-paper-square-background-simple-light-and-shadow-concept-vector.jpg");
+
+
+}
+
+</style>
+
+<script>
+
+function sqaureShow(){
+    new Suica();
+    let A=Number(document.getElementById("A").value);
+	//oxyz();
+    let maxLength=0;
+    let distances= new Set();
+	lookAt([20,20,19],[-0.5,-0.5,0],[0,0,1]);
+    let sq=square([0,0,0],A);
+	sq.origin = [-0.5,-0.5,0];
+    
+	background([0,0,0]);
+	
+
+	sq.mode=Suica.LINE;
+	sq.focus=[1,1,0];
+	sq.color=[1,0,0];
+	
+	let longestX1=0;
+	let longestY1=0;
+	let longestX2=0;
+	let longestY2=0;
+
+    for(var x1=0;x1<=A;x1++){
+        for(var x2=0;x2<=A;x2++){
+            for(var y1=0;y1<=A;y1++){
+                for(var y2=0;y2<=A;y2++){
+                    if(x1!=x2 && y1!=y2){
+
+                        let distance=Math.sqrt(Math.pow(x1-x2,2)+Math.pow(y1-y2,2));
+
+                        if(distance > 0 && distance%1==0){
+                          distances.add(distance);
+						  
+						  
+                          if(distance > maxLength){
+							 
+                              maxLength=distance;
+							  longestX1=x1;
+							  longestY1=y1;
+							  longestX2=x2;
+							  longestY2=y2;
+
+                          }
+						  
+
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+	
+	let longestSegment=segment([longestX1,longestY1,0],[longestX2,longestY2,0]);
+	longestSegment.color=[0,0.4,1];
+	longestSegment.focus=[1,1,0];
+	console.log(longestX1,longestY1,longestX2,longestY2);
+    let count=distances.size;
+	document.getElementById("notColored").textContent="The maximum length of segment is : "+maxLength+"   the count of the segments is : "+count;
+
+
+}
+
+</script>
+
+</head>
+
+
+<body>
+
+ <label for="A">Length of the side of the square A = </label>
+ <input type="number" id="A" onfocus="value=''" name="A" min="0" max="20000"><br><br>
+ <button onclick="sqaureShow()">SHOW</button>
+ <canvas width="800" height="500" style="border: solid black 1px; background-color:White;">Не се поддържа canvas!</canvas>
+		<noscript>Не се поддържа JS!</noscript>
+		<p id="notColored"></p>
+
+
+</body>
+
+
+</html>
