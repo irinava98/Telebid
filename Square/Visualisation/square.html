@@ -8,12 +8,19 @@
 <script src="suica.min.js"></script>
 <style>
 
+h1{
+  font-weight:bold;
+}
 button{
-border-radius: 15px 20px;
-font-size:15px;
-padding:10px;
+font-size:20px;
+top:600px;
+left:840px;
+position:absolute;
+border-radius:20px;
+font-size:18px;
+padding:14px;
 magin:20px;
-background-color:rgb(90%,0%,20%);
+background-color:rgb(90%,0%,0%);
 }
 
 button:hover{
@@ -23,8 +30,10 @@ font-weight:bold;
 body{
 font-size:20px;
 background-image:url("abstract-embossed-white-grey-paper-square-background-simple-light-and-shadow-concept-vector.jpg");
+}
 
-
+input{
+font-size:15px;
 }
 
 </style>
@@ -89,7 +98,7 @@ function sqaureShow(){
 	longestSegment.focus=[1,1,0];
 	console.log(longestX1,longestY1,longestX2,longestY2);
     let count=distances.size;
-	document.getElementById("notColored").textContent="The maximum length of segment is : "+maxLength+"   the count of the segments is : "+count;
+	document.getElementById("notColored").textContent="The length of the longest segment is : "+maxLength+" , the count is : "+count;
 
 
 }
@@ -101,6 +110,7 @@ function sqaureShow(){
 
 <body>
 
+<h1 style="text-align:center;">The square and the longest segment in it </h1>
  <label for="A">Length of the side of the square A = </label>
  <input type="number" id="A" onfocus="value=''" name="A" min="1" max="20000"><br><br>
  <button onclick="sqaureShow()">SHOW</button>
