@@ -17,7 +17,7 @@ if(!empty($_POST))
 		
 	}
 
-	$result=round($num1/$num2,2);
+	
 	
 	$server="localhost";
 	$username="root";
@@ -30,16 +30,22 @@ if(!empty($_POST))
 	  {
 		die('Could not connect: ' . mysql_error());
 	  }
-	  $sqlInsert = "INSERT INTO numbers(number1, number2, result)
-				VALUES ($num1,$num2,$result)";
+	  $sqlInsert = "INSERT INTO numbers(number1, number2)
+				VALUES ($num1,$num2)";
 				
 	 if ($conn->query($sqlInsert) === TRUE){
 		
-	      $sqlSelect="SELECT id FROM numbers ORDER BY id DESC LIMIT 1";
-	      $resultArrayFromSelect=$conn->query($sqlSelect);
-	      $row = $resultArrayFromSelect->fetch_row();
+	  $resultSelect="SELECT number1/number2 FROM numbers ORDER BY id DESC LIMIT 1";	
+	  $resultSelectArrayForDivision=$conn->query($resultSelect);
+	  $row = $resultSelectArrayForDivision->fetch_row();
+	  $result=round($row[0],2);
 	  
-	  echo "<small><small> Added new record successfully on row :".$row[0]."</small></small>";
+	  $sqlSelect="SELECT id FROM numbers ORDER BY id DESC LIMIT 1";
+      $resultArrayFromSelectForId=$conn->query($sqlSelect);
+
+      $row = $resultArrayFromSelectForId->fetch_row();
+	  
+	  echo "<small><small> Added new record successfully on row : ".$row[0]."</small></small>";
 	} else {
 	  echo "Error: " . $sqlInsert . "<br>" . $conn->error;
 	}
