@@ -53,7 +53,7 @@ if(!empty($_POST))
 		
 	    if(!empty($place)){
 			
-		    $searchObstFromDb="SELECT * FROM ek_obst WHERE name LIKE '$place%'";
+		    $searchObstFromDb="SELECT * FROM ek_obst WHERE name LIKE '%$place%'";
 			$resultFromSelectObst=$conn->query($searchObstFromDb);
 
 			
@@ -78,7 +78,7 @@ if(!empty($_POST))
 			
 			
 			
-			$searchOblFromDb="SELECT * FROM ek_obl WHERE name LIKE '$place%'";
+			$searchOblFromDb="SELECT * FROM ek_obl WHERE name LIKE '%$place%'";
 			$resultArrayFromSelectObl=$conn->query($searchOblFromDb);
 			
 			if ($resultArrayFromSelectObl->num_rows > 0) {
@@ -99,7 +99,7 @@ if(!empty($_POST))
 			
 			
 			
-			$searchSelFromDb="SELECT * FROM ek_atte WHERE name LIKE '$place%'";
+			$searchSelFromDb="SELECT * FROM ek_atte WHERE name LIKE '%$place%'";
 			$resultArrayFromSelectSel=$conn->query($searchSelFromDb);
 			
 			if ($resultArrayFromSelectSel->num_rows > 0) {
