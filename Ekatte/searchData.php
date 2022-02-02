@@ -152,7 +152,7 @@ form{
 }
 
 label{
-	font-size:25px;
+	font-size:28px;
 }
 body{
 
@@ -181,6 +181,7 @@ font-size:25px;
 input{
 	
 font-size:20px;
+padding:7px;
 }
 
 
@@ -188,16 +189,14 @@ input[type="submit"]{
 	border-style:solid;
 	padding:10px;
 	border-radius:30px;
+	
 }
-#searchObst:hover{
-	background-color:Aqua;
+#searchPlace:hover{
+	box-shadow: 2px 2px DimGray;
+	cursor: pointer;
+	background-color:DarkTurquoise;
 }
-#searchObl:hover{
-	background-color:Gold;
-}
-#searchSel:hover{
-	background-color:LawnGreen;
-}
+
 
 #result{
 	text-align:center;
