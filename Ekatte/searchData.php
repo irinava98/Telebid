@@ -27,12 +27,12 @@ if(!empty($_POST))
 	  }
 	  
 	
-			$searchCountObst="SELECT COUNT(DISTINCT name) FROM ek_obst";
+			$searchCountObst="SELECT COUNT(name) FROM ek_obst";
 			$countObst=$conn->query($searchCountObst);
 			$row = $countObst->fetch_row();
 			echo "<h3> Брой общини: ".$row[0]."</h3>";
 		    
-			$searchCountObl="SELECT COUNT(DISTINCT name) FROM ek_obl";
+			$searchCountObl="SELECT COUNT(name) FROM ek_obl";
 			$countObl=$conn->query($searchCountObl);
 			$row = $countObl->fetch_row();
 			echo "<h3> Брой области: ".$row[0]."</h3>";
